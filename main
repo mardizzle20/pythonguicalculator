@@ -1,0 +1,147 @@
+from tkinter import *
+import math
+import time
+
+root = Tk()
+root.title("Simple Calculator")
+
+e = Entry(root, width=35, borderwidth=5)
+e.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
+
+def button_click(number):
+    current = e.get()
+    e.delete(0, END)
+    e.insert(0, str(current) + str(number))
+#get what was entered into the box, delete what's in the box, and then insert
+#what was just in the box and what was just entered
+
+def button_add():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "addition"
+    f_num = int(first_number)
+    e.delete(0, END)
+
+def button_subtract():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "subtraction"
+    f_num = int(first_number)
+    e.delete(0, END)
+
+def button_multiply():
+    first_number = e.get()
+    global f_num
+    global math 
+    math = "multiplication"
+    f_num = int(first_number)
+    e.delete(0, END)
+
+def button_divide():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "division"
+    f_num = int(first_number)
+    e.delete(0, END)
+
+def button_squareroot():
+    first_number = e.get()
+    e.delete(0, END)
+    e.insert(0, math.sqrt(int(first_number)))
+
+def button_square():
+    first_number = e.get()
+    e.delete(0, END)
+    e.insert(0, int(first_number) ** 2)
+
+def button_QF():
+    e.insert(0, "a = ")
+#need to finish this. steps, but can't implement
+#1. print out a
+#2. let the user enter the number as "a=#"
+#3. get the number
+#4. repeat
+    
+
+
+def button_equal():
+    second_number = e.get()
+    e.delete(0, END)
+
+    if math == "addition":
+        e.insert(0, f_num + int(second_number))
+    if math == "subtraction":
+        e.insert(0, f_num - int(second_number))
+    if math == "multiplication":
+        e.insert(0, f_num * int(second_number))
+    if math == "division":
+        e.insert(0, f_num / int(second_number))
+
+
+def button_clear():
+    e.delete(0, END)
+
+
+#creating the number buttons
+button1 = Button(root, text="1", padx=50, pady=10, command=lambda: button_click(1))
+button2 = Button(root, text="2", padx=50, pady=10, command=lambda: button_click(2))
+button3 = Button(root, text="3", padx=50, pady=10, command=lambda: button_click(3))
+button4 = Button(root, text="4", padx=50, pady=10, command=lambda: button_click(4))
+button5 = Button(root, text="5", padx=50, pady=10, command=lambda: button_click(5))
+button6 = Button(root, text="6", padx=50, pady=10, command=lambda: button_click(6))
+button7 = Button(root, text="7", padx=50, pady=10, command=lambda: button_click(7))
+button8 = Button(root, text="8", padx=50, pady=10, command=lambda: button_click(8))
+button9 = Button(root, text="9", padx=50, pady=10, command=lambda: button_click(9))
+button0 = Button(root, text="0", padx=50, pady=10, command=lambda: button_click(0))
+
+#buttons for 4 basic operations
+button_add = Button(root, text="+", padx=50, pady=10, command=button_add)
+button_subtraction = Button(root, text="-", padx=50, pady=10, command=button_subtract)
+button_divide = Button(root, text="/", padx=50, pady=10, command=button_divide)
+button_multiply = Button(root, text="x", padx=50, pady=10, command=button_multiply)
+
+#extra math functions
+button_squareroot = Button(root, text=u"\u221a", padx=50, pady=10, command=button_squareroot)
+button_square = Button(root, text="x\N{SUPERSCRIPT TWO}", padx=50, pady=10, command=button_square)
+button_QF = Button(root, text="QF", padx=50, pady=10, command=button_QF)
+
+button_quit = Button(root, text="quit", padx=50, pady=10, command=root.quit)
+
+
+#buttons that play with entries
+button_clear = Button(root, text="clear", padx=40, pady=10, command=button_clear)
+button_equal = Button(root, text="=", padx=50, pady=10, command=button_equal)
+
+#sending the number buttons to the scrren
+button1.grid(row=1,column=0)
+button2.grid(row=1,column=1)
+button3.grid(row=1,column=2)
+button_add.grid(row=1, column=3)
+
+button4.grid(row=2,column=0)
+button5.grid(row=2,column=1)
+button6.grid(row=2,column=2)
+button_subtraction.grid(row=2, column=3)
+
+button7.grid(row=3,column=0)
+button8.grid(row=3,column=1)
+button9.grid(row=3,column=2)
+button_divide.grid(row=3, column=3)
+
+button_clear.grid(row=4, column=0)
+button0.grid(row=4,column=1)
+button_equal.grid(row=4, column=2)
+button_multiply.grid(row=4, column=3)
+
+button_squareroot.grid(row=5, column=0)
+button_square.grid(row=5, column=1)
+button_QF.grid(row=5, column=2)
+
+button_quit.grid(row=5, column=3)
+
+
+
+root.mainloop()
